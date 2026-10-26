@@ -1,0 +1,25 @@
+---
+import { ui } from '../../i18n/ui';
+import type { Locale } from '../../lib/routes';
+interface Props { locale: Locale }
+const t = ui(Astro.props.locale);
+---
+<div class="theme-control" hidden>
+  <label for="theme">{t.theme}</label>
+  <select id="theme"><option value="system">{t.system}</option><option value="light">{t.light}</option><option value="dark">{t.dark}</option></select>
+</div>
+<script>
+const select = document.querySelector<HTMLSelectElement>('#theme');
+const media = matchMedia('(prefers-color-scheme: dark)');
+if (select) {
+  select.value = document.documentElement.dataset.preference || 'system';
+  const apply = () => {
+    const preference = select.value;
+    document.documentElement.dataset.preference = preference;
+    document.documentElement.dataset.theme = preference === 'system' ? (media.matches ? 'dark' : 'light') : preference;
+  };
+  select.addEventListener('change', () => { apply(); try { localStorage.setItem('abc-theme', select.value); } catch { /* Storage may be blocked. */ } });
+  media.addEventListener('change', () => { if (select.value === 'system') apply(); });
+  select.closest<HTMLElement>('.theme-control')!.hidden = false;
+}
+</script>

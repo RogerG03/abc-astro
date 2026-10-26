@@ -1,0 +1,30 @@
+{
+  "locale": "es",
+  "slug": "saas",
+  "kind": "saas",
+  "name": "Nexo",
+  "title": "Tu equipo, en sintonía",
+  "description": "Organiza proyectos y conversaciones en un único espacio de trabajo de ejemplo.",
+  "action": "Probar calculadora",
+  "sections": [
+    "features",
+    "faq",
+    "cta"
+  ],
+  "features": [
+    {
+      "title": "Una vista compartida",
+      "text": "Proyectos, responsables y próximos pasos en el mismo lugar."
+    },
+    {
+      "title": "Tu ritmo de trabajo",
+      "text": "Define qué sigue y revisa el progreso sin cambiar de contexto."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Es un servicio real?",
+      "answer": "No. Es contenido de muestra para adaptar esta plantilla a tu proyecto."
+    }
+  ]
+}

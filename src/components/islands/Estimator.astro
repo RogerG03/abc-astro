@@ -1,0 +1,34 @@
+---
+import { ui } from '../../i18n/ui';
+import type { Locale } from '../../lib/routes';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = ui(locale);
+---
+<form class="estimator" data-locale={locale} data-error={t.invalid}>
+  <div class="fields"><div><label for="hours">{t.hours}</label><input id="hours" name="hours" type="number" min="0" max="10000" step="0.01" value="8" required /></div>
+  <div><label for="rate">{t.rate}</label><input id="rate" name="rate" type="number" min="0" max="10000" step="0.01" value="25" required /></div></div>
+  <button type="submit" class="action" disabled>{t.calculate}</button>
+  <div role="status" aria-live="polite"><span>{t.result}</span><output id="total" for="hours rate">—</output></div>
+  <p id="form-error" role="alert"></p>
+  <noscript><p>{t.nojs}</p></noscript>
+</form>
+<script>
+import { estimate } from '../../lib/estimate';
+const form = document.querySelector<HTMLFormElement>('.estimator');
+if (form) {
+  const output = form.querySelector<HTMLOutputElement>('output')!;
+  const error = form.querySelector<HTMLElement>('#form-error')!;
+  const hours = form.querySelector<HTMLInputElement>('#hours')!;
+  const rate = form.querySelector<HTMLInputElement>('#rate')!;
+  const calculate = () => {
+    error.textContent = '';
+    try { output.textContent = new Intl.NumberFormat(form.dataset.locale, { style: 'currency', currency: 'USD' }).format(estimate(hours.valueAsNumber, rate.valueAsNumber)); }
+    catch { output.textContent = '—'; error.textContent = form.dataset.error || ''; }
+  };
+  form.querySelector<HTMLButtonElement>('button')!.disabled = false;
+  form.addEventListener('submit', (event) => { event.preventDefault(); if (form.reportValidity()) calculate(); });
+  form.addEventListener('input', () => { output.textContent = '—'; error.textContent = ''; });
+  calculate();
+}
+</script>

@@ -1,0 +1,21 @@
+---
+import { localizedPath, locales, type Locale } from '../../lib/routes';
+interface Props { title: string; description: string; locale: Locale; path?: string; noindex?: boolean }
+const { title, description, locale, path = '', noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const placeholder = Astro.site?.hostname === 'example.com';
+const schema = { '@context': 'https://schema.org', '@type': 'WebPage', name: title, description, url: canonical.href, inLanguage: locale };
+---
+<title>{title} | ABC Astro</title>
+<meta name="description" content={description} />
+<meta name="robots" content={noindex || placeholder ? 'noindex, follow' : 'index, follow'} />
+{!noindex && <link rel="canonical" href={canonical} />}
+{!noindex && locales.map((lang) => <link rel="alternate" hreflang={lang} href={new URL(localizedPath(lang, path), Astro.site)} />)}
+{!noindex && <link rel="alternate" hreflang="x-default" href={new URL(localizedPath('es', path), Astro.site)} />}
+<meta property="og:type" content="website" />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content={locale === 'es' ? 'es_ES' : 'en_US'} />
+<meta name="twitter:card" content="summary" />
+<script type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\u003c')} />

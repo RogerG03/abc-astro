@@ -1,0 +1,30 @@
+{
+  "locale": "es",
+  "slug": "studio",
+  "kind": "studio",
+  "name": "Forma",
+  "title": "Ideas que toman forma",
+  "description": "Un estudio ficticio de identidad y diseño digital para marcas que empiezan.",
+  "action": "Probar calculadora",
+  "sections": [
+    "features",
+    "cta",
+    "faq"
+  ],
+  "features": [
+    {
+      "title": "Identidad con intención",
+      "text": "De la estrategia a los sistemas visuales que puedes seguir usando."
+    },
+    {
+      "title": "Diseño para la web",
+      "text": "Páginas centradas en tu mensaje y en las personas que las visitan."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Es un servicio real?",
+      "answer": "No. Es contenido de muestra para adaptar esta plantilla a tu proyecto."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "locale": "en",
+  "slug": "event",
+  "kind": "event",
+  "name": "Encuentro",
+  "title": "A day to create",
+  "description": "A fictional gathering to learn, share ideas and build something together.",
+  "action": "Try the calculator",
+  "sections": [
+    "features",
+    "faq",
+    "cta"
+  ],
+  "features": [
+    {
+      "title": "Open workshop",
+      "text": "A hands-on session to move from an idea to a prototype."
+    },
+    {
+      "title": "Useful conversations",
+      "text": "A place to meet other people and share what you have learned."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is this a real service?",
+      "answer": "No. This is sample content for adapting the template to your project."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+import Estimator from '../components/islands/Estimator.astro';
+import { ui } from '../i18n/ui';
+import type { Locale } from '../lib/routes';
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = ui(locale);
+---
+<SiteLayout title={t.calculator} description={t.calculatorIntro} locale={locale} path="app" kind="app"><section class="app wrap"><h1>{t.calculator}</h1><p>{t.calculatorIntro}</p><Estimator locale={locale} /></section></SiteLayout>

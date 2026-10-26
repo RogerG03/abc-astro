@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+import SeoHead from '../components/seo/SeoHead.astro';
+import ThemeSelect from '../components/ui/ThemeSelect.astro';
+import { localizedPath, type Locale } from '../lib/routes';
+import { ui } from '../i18n/ui';
+interface Props { title: string; description: string; locale: Locale; path?: string; noindex?: boolean; kind?: string }
+const { title, description, locale, path = '', noindex = false, kind = 'home' } = Astro.props;
+const t = ui(locale);
+---
+<!doctype html>
+<html lang={locale} data-kind={kind}>
+  <head>
+    <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <SeoHead title={title} description={description} locale={locale} path={path} noindex={noindex} />
+    <script is:inline>
+      (() => {
+        let preference = 'system';
+        try { const value = localStorage.getItem('abc-theme'); if (value === 'light' || value === 'dark') preference = value; } catch {}
+        document.documentElement.dataset.preference = preference;
+        document.documentElement.dataset.theme = preference === 'system' ? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : preference;
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{t.skip}</a>
+    <header class="site-header wrap">
+      <a class="brand" href={localizedPath(locale)} aria-label={`ABC Astro · ${t.home}`}>abc<span>astro</span></a>
+      <nav aria-label={locale === 'es' ? 'Principal' : 'Main'}>
+        <a href={`${localizedPath(locale)}#templates`}>{t.recipes}</a>
+        <a href={localizedPath(locale, 'app')}>{t.app}</a>
+        {!noindex && <a href={localizedPath(locale === 'es' ? 'en' : 'es', path)} lang={locale === 'es' ? 'en' : 'es'}>{locale === 'es' ? 'English' : 'Español'}</a>}
+      </nav>
+    </header>
+    <main id="main" tabindex="-1"><slot /></main>
+    <footer class="site-footer wrap">
+      <p>{t.sample}</p><ThemeSelect locale={locale} />
+      <a href="https://github.com/RogerG03/abc-astro">GitHub</a>
+    </footer>
+  </body>
+</html>

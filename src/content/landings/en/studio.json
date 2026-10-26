@@ -1,0 +1,30 @@
+{
+  "locale": "en",
+  "slug": "studio",
+  "kind": "studio",
+  "name": "Forma",
+  "title": "Ideas taking shape",
+  "description": "A fictional identity and digital design studio for emerging brands.",
+  "action": "Try the calculator",
+  "sections": [
+    "features",
+    "cta",
+    "faq"
+  ],
+  "features": [
+    {
+      "title": "Identity with intent",
+      "text": "From strategy to visual systems you can keep using."
+    },
+    {
+      "title": "Design for the web",
+      "text": "Pages built around your message and the people who visit them."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is this a real service?",
+      "answer": "No. This is sample content for adapting the template to your project."
+    }
+  ]
+}

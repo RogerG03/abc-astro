@@ -1,0 +1,30 @@
+{
+  "locale": "es",
+  "slug": "event",
+  "kind": "event",
+  "name": "Encuentro",
+  "title": "Un día para crear",
+  "description": "Un encuentro ficticio para aprender, compartir ideas y construir algo juntos.",
+  "action": "Probar calculadora",
+  "sections": [
+    "features",
+    "faq",
+    "cta"
+  ],
+  "features": [
+    {
+      "title": "Taller abierto",
+      "text": "Una sesión práctica para pasar de una idea a un prototipo."
+    },
+    {
+      "title": "Conversaciones útiles",
+      "text": "Un espacio para conocer a otras personas y compartir aprendizajes."
+    }
+  ],
+  "faq": [
+    {
+      "question": "¿Es un servicio real?",
+      "answer": "No. Es contenido de muestra para adaptar esta plantilla a tu proyecto."
+    }
+  ]
+}

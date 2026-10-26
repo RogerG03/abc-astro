@@ -1,0 +1,30 @@
+{
+  "locale": "en",
+  "slug": "saas",
+  "kind": "saas",
+  "name": "Nexo",
+  "title": "A shared place for your team",
+  "description": "Organise projects and conversations in one example workspace.",
+  "action": "Try the calculator",
+  "sections": [
+    "features",
+    "faq",
+    "cta"
+  ],
+  "features": [
+    {
+      "title": "A shared view",
+      "text": "Projects, owners and next steps in the same place."
+    },
+    {
+      "title": "Your working rhythm",
+      "text": "Choose what comes next and review progress without switching context."
+    }
+  ],
+  "faq": [
+    {
+      "question": "Is this a real service?",
+      "answer": "No. This is sample content for adapting the template to your project."
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+---
+import Action from '../ui/Action.astro';
+interface Props { title: string; href: string; label: string }
+const { title, href, label } = Astro.props;
+---
+<section class="closing"><div class="wrap"><h2>{title}</h2><Action href={href}>{label}</Action></div></section>
